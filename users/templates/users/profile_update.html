@@ -1,0 +1,31 @@
+{% extends 'anketa/base1.html' %}
+{% load crispy_forms_tags %}
+{% block head_title %}Update | {{ block.super }}{% endblock head_title %}
+{% block content %}
+    <br>
+    <h1 class="text-uppercase font-weight-bold"><i class="fa fa-id-card" aria-hidden="true"></i> Ma'lumotlarni Yangilash</h1>
+  <div class="content-section">
+  <div class="media">
+    <img class="account-img .z-depth-2" src="{{ user.profile.image.url }}">
+    <div class="media-body">
+      <h5 class="">{{ user.profile.surname }} {{ user.profile.name }} </h5>
+      <p class="text-secondary">{{ user.email }}</p>
+
+    </div>
+  </div>
+  <form method="post" enctype="multipart/form-data" class="uniForm">
+            {% csrf_token %}
+
+            <fieldset class="form-group">
+            <legend class="border-bottom mb-4"><i class="fa fa-id-card-o" aria-hidden="true"></i> Shaxsiy Ma'lumotlar</legend>
+                {{ u_form|crispy }}
+                {{ p_form|crispy }}
+            </fieldset>
+
+            <div class="form-group">
+                <button class="btn btn-primary btn-rounded" type="submit">Yangilash</button>
+             </div>
+
+        </form>
+</div>
+{% endblock %}

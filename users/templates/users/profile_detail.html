@@ -1,0 +1,46 @@
+{% extends 'anketa/base1.html' %}
+{% block head_title %}{{ user.profile.surname }} | {{ block.super }}{% endblock head_title %}
+{% block content %}
+    <br>
+<div class="content-section z-depth-3">
+   <div class="media">
+	   <img class="account-img rounded mb-0 z-depth-3" src="{{ user.profile.image.url }}">
+	    <div class="media-body">
+	      <h4 class="mt-2">{{ user.profile.surname }} {{ user.profile.name }}</h4>
+	      <p class="text-secondary">{{ user.email }}</p>
+		</div>
+   </div>
+
+    <br>
+            <fieldset class="form-group">
+            <legend class="border-bottom mb-2"><i class="fa fa-id-card-o" aria-hidden="true"></i> Shaxsiy Ma'lumotlar</legend>
+           </fieldset>
+
+                <div class="content-section z-depth-1">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <strong>Familiya Ismi :</strong> {{ user.profile.surname }} {{ user.profile.name }}<br>
+                            <strong>Tug'ilgan sana :</strong> {{ user.profile.birth_date|date:"F d, Y"}}<br>
+                            <strong>Jinsi :</strong> {{ user.profile.gender }}<br>
+                            <strong>Yashash joyi :</strong> {{ user.profile.address }}<br>
+                            <strong>Telefon raqami :</strong>{{ user.profile.phone_num }}
+                        </div>
+
+                        <div class="col-md-6">
+                          <strong>Vazni :</strong> {{ user.profile.weight }}kg<br>
+                          <strong>Bo'yi :</strong> {{ user.profile.height }}sm<br>
+                          <strong>Qon Guruhi :</strong> {{ user.profile.blood_type }}<br>
+                          <strong>Qon Bera olish :</strong> {{ user.profile.blood_relation_give }}<br>
+                          <strong>Qon Olish :</strong> {{ user.profile.blood_relation_recieve }}<br>
+                        </div>
+                    </div>
+
+                </div>
+            <div class="form-group">
+                <a class="btn btn-warning z-depth-3" href={% url 'profile_update' %}>Ma'lumotlarni yangilash <i class="fa fa-cogs" aria-hidden="true"></i></a>
+            </div>
+
+
+        
+</div>
+{% endblock %}
